@@ -10,6 +10,7 @@
 		0F0EDF321D58FA8B00F0D2E5 /* RicRibbonTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0EDF311D58FA8B00F0D2E5 /* RicRibbonTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F0EDF391D58FA8C00F0D2E5 /* RicRibbonTag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0EDF2E1D58FA8B00F0D2E5 /* RicRibbonTag.framework */; };
 		0F0EDF3E1D58FA8C00F0D2E5 /* RicRibbonTagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0EDF3D1D58FA8C00F0D2E5 /* RicRibbonTagTests.swift */; };
+		0F0EDF4A1D58FC1A00F0D2E5 /* RicRibbonTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0EDF491D58FC1A00F0D2E5 /* RicRibbonTag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		0F0EDF381D58FA8C00F0D2E5 /* RicRibbonTagTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RicRibbonTagTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F0EDF3D1D58FA8C00F0D2E5 /* RicRibbonTagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RicRibbonTagTests.swift; sourceTree = "<group>"; };
 		0F0EDF3F1D58FA8C00F0D2E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F0EDF491D58FC1A00F0D2E5 /* RicRibbonTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RicRibbonTag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				0F0EDF311D58FA8B00F0D2E5 /* RicRibbonTag.h */,
 				0F0EDF331D58FA8B00F0D2E5 /* Info.plist */,
+				0F0EDF491D58FC1A00F0D2E5 /* RicRibbonTag.swift */,
 			);
 			path = RicRibbonTag;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F0EDF4A1D58FC1A00F0D2E5 /* RicRibbonTag.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +314,7 @@
 		0F0EDF431D58FA8C00F0D2E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -320,12 +325,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ricard.RicRibbonTag;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		0F0EDF441D58FA8C00F0D2E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -378,6 +385,7 @@
 				0F0EDF441D58FA8C00F0D2E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0F0EDF451D58FA8C00F0D2E5 /* Build configuration list for PBXNativeTarget "RicRibbonTagTests" */ = {
 			isa = XCConfigurationList;
@@ -386,6 +394,7 @@
 				0F0EDF471D58FA8C00F0D2E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
