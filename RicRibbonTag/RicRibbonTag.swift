@@ -468,20 +468,6 @@ class RicRibbonTag: CAShapeLayer, RicRibbonLabelProtocol {
     }
 }
 
-class RicRibbonLabel: UILabel {
-    var delegate: RicRibbonLabelProtocol!
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        delegate?.ribbonLabelUpdatedLayout(self)
-    }
-}
-
-protocol RicRibbonLabelProtocol {
-    func ribbonLabelUpdatedLayout(sender: RicRibbonLabel)
-}
-
-
 enum RibbonType {
     case TopLeftCorner
     case TopRightCorner
