@@ -70,6 +70,10 @@ class RicRibbonTag: CAShapeLayer, RicRibbonLabelProtocol {
         didSet { renderRibbon() }
     }
     
+    var displayDecorators: Bool = true {
+        didSet { renderRibbon() }
+    }
+    
     var type = RibbonType.TopLeftCorner {
         didSet { renderRibbon() }
     }
@@ -168,7 +172,16 @@ class RicRibbonTag: CAShapeLayer, RicRibbonLabelProtocol {
             }
             
             configureShape(with: path)
-            renderDecoration()
+            
+            if displayDecorators {
+                if type == .Left || type == .Right || type == .Top || movesHorizontally {
+                    print("Decorations not available for .Left, .Right, .Top types and movesHorizontally property enabled, waiting for " +
+                        "https://github.com/ricardrm88/RicRibbonTag/issues/4")
+                } else {
+                    renderDecoration()
+                }
+            }
+            
         }
     }
     
