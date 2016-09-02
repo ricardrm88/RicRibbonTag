@@ -235,20 +235,25 @@ class RicRibbonTag: CAShapeLayer, RicRibbonLabelProtocol {
         
         configShadowLayerUI(decorationShadowLayer, path: pointsToPath(shadowPoints))
         
+        var vDecorationOffset = decorationOffset
+        if type == .BottomLeftCorner || type == .TopRightCorner {
+            vDecorationOffset = -decorationOffset
+        }
+        
         //Second decoration layer
         if ribbonPoints.count > 3 {
             let last = ribbonPoints[ribbonPoints.count - 3]
             let points2 = [CGPoint(x: last.x, y: last.y),
-                           CGPoint(x: last.x - decorationOffset, y: last.y + decorationOffset),
-                           CGPoint(x: last.x - decorationOffset, y: ribbonPoints[ribbonPoints.count - 2].y + decorationOffset),
+                           CGPoint(x: last.x - decorationOffset, y: last.y + vDecorationOffset),
+                           CGPoint(x: last.x - decorationOffset, y: ribbonPoints[ribbonPoints.count - 2].y + vDecorationOffset),
                            CGPoint(x: last.x, y: ribbonPoints[ribbonPoints.count - 2].y)]
             
             configDecorationLayerUI(decorationLayer2, path: pointsToPath(points2))
         }
         
         //Second shadow layer
-        let shadowPoints2 = [CGPoint(x: ribbonPoints[2].x - decorationOffset, y: ribbonPoints[2].y + decorationOffset),
-                             CGPoint(x: ribbonPoints[2].x, y: ribbonPoints[2].y + decorationOffset*4/5),
+        let shadowPoints2 = [CGPoint(x: ribbonPoints[2].x - decorationOffset, y: ribbonPoints[2].y + vDecorationOffset),
+                             CGPoint(x: ribbonPoints[2].x, y: ribbonPoints[2].y + vDecorationOffset*4/5),
                              CGPoint(x: ribbonPoints[2].x, y: ribbonPoints[2].y)]
         
         configShadowLayerUI(decorationShadowLayer2, path: pointsToPath(shadowPoints2))
