@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "RicRibbonTag"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "Library for adding tags shaped as ribbons to existing views"
 
   # This description is used to generate tags and improve search results.
@@ -70,7 +70,7 @@ Pod::Spec.new do |s|
   # s.platform     = :ios, "5.0"
 
   #  When using multiple platforms
-  s.ios.deployment_target = "9.3"
+  s.ios.deployment_target = "8.1"
   # s.osx.deployment_target = "10.7"
   # s.watchos.deployment_target = "2.0"
   # s.tvos.deployment_target = "9.0"
@@ -82,7 +82,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/ricardrm88/RicRibbonTag.git", :tag => "1.0.0" }
+  s.source       = { :git => "https://github.com/ricardrm88/RicRibbonTag.git", :tag => "1.0.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
