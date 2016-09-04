@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RicRibbonTag"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "Library for adding tags shaped as ribbons to existing views"
   s.description  = <<-DESC
   						Library for adding tags shaped as ribbons to existing views, can be used on top
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.ios.deployment_target = "8.1"
   
-  s.source       = { :git => "https://github.com/ricardrm88/RicRibbonTag.git", :tag => "1.0.2" }
+  s.source       = { :git => "https://github.com/ricardrm88/RicRibbonTag.git", :tag => "1.0.3" }
 
   s.source_files  = "RicRibbonTag/*.swift"
 end
