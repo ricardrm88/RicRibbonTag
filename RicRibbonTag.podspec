@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
   
   s.source       = { :git => "https://github.com/ricardrm88/RicRibbonTag.git", :tag => "1.0.2" }
 
-  s.source_files  = "RicRibbonTag", "RicRibbonTag/*.swift"
+  s.source_files  = "RicRibbonTag/*.swift"
 end
