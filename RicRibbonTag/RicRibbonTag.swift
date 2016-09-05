@@ -108,12 +108,12 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
     // MARK: Init methods
     
-    override init(layer: AnyObject) {
+    public override init(layer: AnyObject) {
         super.init()
         initializeUI()
     }
     
-    override init() {
+    public override init() {
         super.init()
         initializeUI()
     }
