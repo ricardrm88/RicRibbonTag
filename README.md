@@ -22,6 +22,32 @@ After that run the following command on your Cartfile directory
 carthage update RicRibbonTag
 ```
 
+#### Using CocoaPods
+
+Add to your Podfile
+
+```
+platform :ios, "8.1"
+use_frameworks!
+
+target 'Test' do
+pod 'RicRibbonTag'
+
+end
+```
+
+Then run the following line on your project folder:
+
+```
+pod install
+```
+
+After that just include RicRibbonTag in your file to use it
+
+```swift
+import RicRibbonTag
+```
+
 #### Manually
 
 Just copy RicRibbonLabel.swift and RicRibbonTag.swift to your project
