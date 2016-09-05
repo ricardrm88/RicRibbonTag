@@ -26,8 +26,10 @@
 import UIKit
 import Foundation
 
+/// A ribbon with messages used to wrap views.
 public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
+     /// The label displayed in the ribbon.
     public var label: RicRibbonLabel!
     
     private var wrappedView: UIView!
@@ -47,58 +49,72 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     private var stripeSpaceWidth: CGFloat = 0.0
     private var angle: CGFloat = 0.0
     
+     /// The size of the decorations added outside of the view.
     public var decorationSize: CGFloat = 18.0 {
         didSet{ renderRibbon() }
     }
     
+     /// The width of the ribbon.
     public var ribbonWidth: CGFloat = 20.0 {
         didSet{ renderRibbon() }
     }
     
+     /// The color of the ribbon.
     public var ribbonColor: CGColor = UIColor.init(red: 0.6, green: 0.2, blue: 0.2, alpha: 1.0).CGColor {
         didSet{ renderRibbon() }
     }
     
+     /// The color of the margin around the ribbon, if any.
     public var marginColor: CGColor = UIColor.init(red: 1.0, green: 0.8, blue: 0.2, alpha: 1.0).CGColor {
         didSet{ renderRibbon() }
     }
     
+     /// The width of the margin around the ribbon.
     public var marginWidth: CGFloat = 0.0 {
         didSet{ renderRibbon() }
     }
     
+     /// The distance between the origin corner point and the point of the ribbon closer to it.
     public var originDistance: CGFloat = 50.0 {
         didSet{ renderRibbon() }
     }
     
+     /// The length of the ribbon in Right, Left and Top ribbons.
     public var ribbonLength: CGFloat = 100.0 {
         didSet{ renderRibbon() }
     }
     
+     /// If true the ribbon and the origin may be modyfied to keep the whole ribbon in bounds.
     public var keepInBounds: Bool = true {
         didSet { renderRibbon() }
     }
     
+     /// If true the ribbon may move horizontally if it's taller than the view containing it.
     public var movesHorizontally: Bool = false {
         didSet { renderRibbon() }
     }
     
+     /// Displays a shadow below the ribbon if true.
     public var usesShadow: Bool = true {
         didSet { renderRibbon() }
     }
     
+     /// Displays decorators outside the parent view if true.
     public var displayDecorators: Bool = true {
         didSet { renderRibbon() }
     }
     
+     /// The type of ribbon that will render.
     public var type = RibbonType.TopLeftCorner {
         didSet { renderRibbon() }
     }
     
+     /// Added padding to ribbon when ribbon is autoresized.
     public var autoresizePadding: CGFloat = 10.0 {
         didSet { renderRibbon() }
     }
     
+     /// When true the ribbon will autoresize to wrap it's content.
     public var autoresizes: Bool = false {
         didSet {
             setSizeToFit()
@@ -108,16 +124,37 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
     // MARK: Init methods
     
+    /**
+     Initializes a new ribbon with a given layer.
+     
+     - Parameters:
+     - layer: The given layer for the ribbon
+     
+     - Returns: An initialized ribbon.
+     */
     public override init(layer: AnyObject) {
         super.init()
         initializeUI()
     }
     
+    /**
+     Initializes a new ribbon.
+     
+     - Returns: An initialized ribbon.
+     */
     public override init() {
         super.init()
         initializeUI()
     }
     
+    /**
+     Initializes a new ribbon with a given NSCoder.
+     
+     - Parameters:
+     - aDecoder: The given coder for the ribbon
+     
+     - Returns: An initialized ribbon.
+     */
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -145,6 +182,11 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
     // MARK: Public methods
     
+    /**
+     Surrounds an UIView with the current ribbon.
+     
+     @param view UIView that will be surrounded by the ribbon.
+     */
     public func wrap(view: UIView) {
         view.layer.insertSublayer(self, atIndex: 0)
         
@@ -160,6 +202,12 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
         applyMasks()
     }
     
+    /**
+     Sets a dashed pattern around the ribbon edges.
+     
+     @param lineWidth width of the dashed pattern.
+     @param spaceWidth space between stripes.
+     */
     public func setDashPattern(lineWidth: CGFloat, spaceWidth: CGFloat){
         stripeWidth = lineWidth
         stripeSpaceWidth = spaceWidth
@@ -459,6 +507,11 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
     // MARK: Delegate methods
     
+    /**
+     This function is triggered when the label in the ribbon has been updated.
+     
+     @param sender label that has been updated.
+     */
     public func ribbonLabelUpdatedLayout(sender: RicRibbonLabel) {
         if autoresizes {
             switch self.type {
@@ -473,6 +526,17 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     }
 }
 
+/**
+ Ribbon style type.
+ 
+ - TopLeftCorner: Displays the ribbon at the top left corner of the view.
+ - TopRightCorner: Displays the ribbon at the top right corner of the view.
+ - BottomLeftCorner: Displays the ribbon at the bottom left corner of the view.
+ - BottomRightCorner: Displays the ribbon at the bottom right corner of the view.
+ - Left: Displays the ribbon at the left side of the view.
+ - Right: Displays the ribbon at the right of the view.
+ - Top: Displays the ribbon at the top of the view.
+ */
 public enum RibbonType {
     case TopLeftCorner
     case TopRightCorner
