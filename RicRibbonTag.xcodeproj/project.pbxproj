@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F0EDF321D58FA8B00F0D2E5 /* RicRibbonTag.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F0EDF311D58FA8B00F0D2E5 /* RicRibbonTag.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F0EDF391D58FA8C00F0D2E5 /* RicRibbonTag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F0EDF2E1D58FA8B00F0D2E5 /* RicRibbonTag.framework */; };
 		0F0EDF3E1D58FA8C00F0D2E5 /* RicRibbonTagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0EDF3D1D58FA8C00F0D2E5 /* RicRibbonTagTests.swift */; };
 		0F0EDF4A1D58FC1A00F0D2E5 /* RicRibbonTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0EDF491D58FC1A00F0D2E5 /* RicRibbonTag.swift */; };
@@ -26,7 +25,6 @@
 
 /* Begin PBXFileReference section */
 		0F0EDF2E1D58FA8B00F0D2E5 /* RicRibbonTag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RicRibbonTag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F0EDF311D58FA8B00F0D2E5 /* RicRibbonTag.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RicRibbonTag.h; sourceTree = "<group>"; };
 		0F0EDF331D58FA8B00F0D2E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F0EDF381D58FA8C00F0D2E5 /* RicRibbonTagTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RicRibbonTagTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F0EDF3D1D58FA8C00F0D2E5 /* RicRibbonTagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RicRibbonTagTests.swift; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 		0F0EDF301D58FA8B00F0D2E5 /* RicRibbonTag */ = {
 			isa = PBXGroup;
 			children = (
-				0F0EDF311D58FA8B00F0D2E5 /* RicRibbonTag.h */,
 				0F0EDF331D58FA8B00F0D2E5 /* Info.plist */,
 				0F0EDF491D58FC1A00F0D2E5 /* RicRibbonTag.swift */,
 				0F21A0E41D787D4200CFF95A /* RicRibbonLabel.swift */,
@@ -99,7 +96,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F0EDF321D58FA8B00F0D2E5 /* RicRibbonTag.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,7 +26,7 @@
 import UIKit
 import Foundation
 
-class RicRibbonTag: CAShapeLayer, RicRibbonLabelProtocol {
+class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
     var label: RicRibbonLabel!
     
