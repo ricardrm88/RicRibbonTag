@@ -145,7 +145,7 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
     // MARK: Public methods
     
-    public func wrapView(view: UIView) {
+    public func wrap(view: UIView) {
         view.layer.insertSublayer(self, atIndex: 0)
         
         //maskView = UIView(frame: view.bounds)
