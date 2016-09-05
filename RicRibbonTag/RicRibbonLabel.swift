@@ -26,15 +26,15 @@
 import Foundation
 import UIKit
 
-class RicRibbonLabel: UILabel {
-    var delegate: RicRibbonLabelProtocol!
+public class RicRibbonLabel: UILabel {
+    public var delegate: RicRibbonLabelProtocol!
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         delegate?.ribbonLabelUpdatedLayout(self)
     }
 }
 
-protocol RicRibbonLabelProtocol {
+public protocol RicRibbonLabelProtocol {
     func ribbonLabelUpdatedLayout(sender: RicRibbonLabel)
 }

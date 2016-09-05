@@ -26,9 +26,9 @@
 import UIKit
 import Foundation
 
-class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
+public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
-    var label: RicRibbonLabel!
+    public var label: RicRibbonLabel!
     
     private var wrappedView: UIView!
     private var maskView: UIView!
@@ -47,59 +47,59 @@ class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     private var stripeSpaceWidth: CGFloat = 0.0
     private var angle: CGFloat = 0.0
     
-    var decorationSize: CGFloat = 18.0 {
+    public var decorationSize: CGFloat = 18.0 {
         didSet{ renderRibbon() }
     }
     
-    var ribbonWidth: CGFloat = 20.0 {
+    public var ribbonWidth: CGFloat = 20.0 {
         didSet{ renderRibbon() }
     }
     
-    var ribbonColor: CGColor = UIColor.init(red: 0.6, green: 0.2, blue: 0.2, alpha: 1.0).CGColor {
+    public var ribbonColor: CGColor = UIColor.init(red: 0.6, green: 0.2, blue: 0.2, alpha: 1.0).CGColor {
         didSet{ renderRibbon() }
     }
     
-    var marginColor: CGColor = UIColor.init(red: 1.0, green: 0.8, blue: 0.2, alpha: 1.0).CGColor {
+    public var marginColor: CGColor = UIColor.init(red: 1.0, green: 0.8, blue: 0.2, alpha: 1.0).CGColor {
         didSet{ renderRibbon() }
     }
     
-    var marginWidth: CGFloat = 0.0 {
+    public var marginWidth: CGFloat = 0.0 {
         didSet{ renderRibbon() }
     }
     
-    var originDistance: CGFloat = 50.0 {
+    public var originDistance: CGFloat = 50.0 {
         didSet{ renderRibbon() }
     }
     
-    var ribbonLength: CGFloat = 100.0 {
+    public var ribbonLength: CGFloat = 100.0 {
         didSet{ renderRibbon() }
     }
     
-    var keepInBounds: Bool = true {
+    public var keepInBounds: Bool = true {
         didSet { renderRibbon() }
     }
     
-    var movesHorizontally: Bool = false {
+    public var movesHorizontally: Bool = false {
         didSet { renderRibbon() }
     }
     
-    var usesShadow: Bool = true {
+    public var usesShadow: Bool = true {
         didSet { renderRibbon() }
     }
     
-    var displayDecorators: Bool = true {
+    public var displayDecorators: Bool = true {
         didSet { renderRibbon() }
     }
     
-    var type = RibbonType.TopLeftCorner {
+    public var type = RibbonType.TopLeftCorner {
         didSet { renderRibbon() }
     }
     
-    var autoresizePadding: CGFloat = 10.0 {
+    public var autoresizePadding: CGFloat = 10.0 {
         didSet { renderRibbon() }
     }
     
-    var autoresizes: Bool = false {
+    public var autoresizes: Bool = false {
         didSet {
             setSizeToFit()
             renderRibbon()
@@ -118,7 +118,7 @@ class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
         initializeUI()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -134,18 +134,18 @@ class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
     // MARK: Parent methods
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         initializeUI()
     }
     
-    override func layoutSublayers() {
+    override public func layoutSublayers() {
         super.layoutSublayers()
         renderRibbon()
     }
     
     // MARK: Public methods
     
-    func wrapView(view: UIView) {
+    public func wrapView(view: UIView) {
         view.layer.insertSublayer(self, atIndex: 0)
         
         //maskView = UIView(frame: view.bounds)
@@ -160,7 +160,7 @@ class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
         applyMasks()
     }
     
-    func setDashPattern(lineWidth: CGFloat, spaceWidth: CGFloat){
+    public func setDashPattern(lineWidth: CGFloat, spaceWidth: CGFloat){
         stripeWidth = lineWidth
         stripeSpaceWidth = spaceWidth
     }
@@ -459,7 +459,7 @@ class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
     // MARK: Delegate methods
     
-    func ribbonLabelUpdatedLayout(sender: RicRibbonLabel) {
+    public func ribbonLabelUpdatedLayout(sender: RicRibbonLabel) {
         if autoresizes {
             switch self.type {
             case .TopLeftCorner, .BottomRightCorner, .TopRightCorner, .BottomLeftCorner, .Left, .Right:
@@ -473,7 +473,7 @@ class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     }
 }
 
-enum RibbonType {
+public enum RibbonType {
     case TopLeftCorner
     case TopRightCorner
     case BottomLeftCorner
