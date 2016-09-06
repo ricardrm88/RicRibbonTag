@@ -319,21 +319,22 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
         if type == .Right || type == .Left{
             
             let offset = type == .Right ? decorationSize : -decorationSize
+            let margin = type == .Right ? -marginWidth/2 : marginWidth/2
             
             decorationLayer = configShapeLayerIfNeeded(decorationLayer)
             decorationShadowLayer = configShapeLayerIfNeeded(decorationShadowLayer)
             
-            let points = [CGPoint(x: ribbonPoints[0].x, y: ribbonPoints[0].y),
+            let points = [CGPoint(x: ribbonPoints[0].x + margin, y: ribbonPoints[0].y),
                           CGPoint(x: ribbonPoints[0].x + offset, y: ribbonPoints[0].y),
                           CGPoint(x: ribbonPoints[0].x + offset, y: ribbonPoints[1].y),
-                          CGPoint(x: ribbonPoints[0].x, y: ribbonPoints[1].y)]
+                          CGPoint(x: ribbonPoints[0].x + margin, y: ribbonPoints[1].y)]
             
             configDecorationLayerUI(decorationLayer, path: pointsToPath(points))
             
             //shadow
             let shadowPoints = [CGPoint(x: ribbonPoints[0].x + offset, y: ribbonPoints[0].y),
-                                CGPoint(x: ribbonPoints[0].x, y: ribbonPoints[0].y - abs(offset*4/5)),
-                                CGPoint(x: ribbonPoints[0].x, y: ribbonPoints[0].y)]
+                                CGPoint(x: ribbonPoints[0].x + margin, y: ribbonPoints[0].y - abs(offset*3/5)),
+                                CGPoint(x: ribbonPoints[0].x + margin, y: ribbonPoints[0].y)]
             
             configShadowLayerUI(decorationShadowLayer, path: pointsToPath(shadowPoints))
         } else if type == .Top{
