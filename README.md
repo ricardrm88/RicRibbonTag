@@ -4,7 +4,8 @@
 
 Library for adding tags shaped as ribbons to existing views
 
-<img width="271" alt="captura de pantalla 2016-09-02 a las 16 55 16" src="https://cloud.githubusercontent.com/assets/7848066/18208717/d62dfde2-7130-11e6-82ca-461594ef2045.png"> <img width="253" alt="captura de pantalla 2016-09-02 a las 17 14 43" src="https://cloud.githubusercontent.com/assets/7848066/18208715/d6007dcc-7130-11e6-889e-313de2e9a646.png"> <img width="262" alt="captura de pantalla 2016-09-02 a las 17 04 40" src="https://cloud.githubusercontent.com/assets/7848066/18208716/d61c1136-7130-11e6-95cb-04b189a1eea8.png"> 
+<img width="271" alt="captura de pantalla 2016-09-02 a las 16 55 16" src="https://cloud.githubusercontent.com/assets/7848066/18208717/d62dfde2-7130-11e6-82ca-461594ef2045.png"> ![captura de pantalla 2016-09-06 a las 8 30 43](https://cloud.githubusercontent.com/assets/7848066/18264340/f784c606-740f-11e6-8c7f-0451e137fc94.png)
+ <img width="262" alt="captura de pantalla 2016-09-02 a las 17 04 40" src="https://cloud.githubusercontent.com/assets/7848066/18208716/d61c1136-7130-11e6-95cb-04b189a1eea8.png"> 
 
 ## Installation
 
