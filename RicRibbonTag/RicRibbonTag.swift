@@ -239,19 +239,27 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
             configureShape(with: path)
             
             if displayDecorators {
-                if type == .Left || type == .Right || type == .Top || movesHorizontally {
-                    print("Decorations not available for .Left, .Right, .Top types and movesHorizontally property enabled, waiting for " +
+                if movesHorizontally {
+                    print("Decorations not available for movesHorizontally property enabled, waiting for " +
                         "https://github.com/ricardrm88/RicRibbonTag/issues/4")
                 } else {
                     renderDecoration()
                 }
             }
-            
         }
     }
     
     private func renderDecoration(){
+        switch type {
+        case .TopLeftCorner, .TopRightCorner, .BottomLeftCorner, .BottomRightCorner:
+            renderCornerDecoration()
+        case .Left, .Right, .Top:
+            renderEdgeDecoration()
+        }
         
+    }
+    
+    private func renderCornerDecoration() {
         //init
         let decorationOffset:CGFloat = type == .TopRightCorner || type == .BottomRightCorner ? -decorationSize : decorationSize
         
@@ -305,6 +313,46 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
                              CGPoint(x: ribbonPoints[2].x, y: ribbonPoints[2].y)]
         
         configShadowLayerUI(decorationShadowLayer2, path: pointsToPath(shadowPoints2))
+    }
+    
+    private func renderEdgeDecoration() {
+        if type == .Right || type == .Left{
+            
+            let offset = type == .Right ? decorationSize : -decorationSize
+            
+            decorationLayer = configShapeLayerIfNeeded(decorationLayer)
+            decorationShadowLayer = configShapeLayerIfNeeded(decorationShadowLayer)
+            
+            let points = [CGPoint(x: ribbonPoints[0].x, y: ribbonPoints[0].y),
+                          CGPoint(x: ribbonPoints[0].x + offset, y: ribbonPoints[0].y),
+                          CGPoint(x: ribbonPoints[0].x + offset, y: ribbonPoints[1].y),
+                          CGPoint(x: ribbonPoints[0].x, y: ribbonPoints[1].y)]
+            
+            configDecorationLayerUI(decorationLayer, path: pointsToPath(points))
+            
+            //shadow
+            let shadowPoints = [CGPoint(x: ribbonPoints[0].x + offset, y: ribbonPoints[0].y),
+                                CGPoint(x: ribbonPoints[0].x, y: ribbonPoints[0].y - abs(offset*4/5)),
+                                CGPoint(x: ribbonPoints[0].x, y: ribbonPoints[0].y)]
+            
+            configShadowLayerUI(decorationShadowLayer, path: pointsToPath(shadowPoints))
+        } else if type == .Top{
+            decorationLayer = configShapeLayerIfNeeded(decorationLayer)
+            decorationShadowLayer = configShapeLayerIfNeeded(decorationShadowLayer)
+            
+            let points = [CGPoint(x: ribbonPoints[0].x, y: ribbonPoints[0].y + marginWidth/2),
+                          CGPoint(x: ribbonPoints[0].x, y: ribbonPoints[0].y - decorationSize),
+                          CGPoint(x: ribbonPoints[1].x, y: ribbonPoints[1].y - decorationSize),
+                          CGPoint(x: ribbonPoints[1].x, y: ribbonPoints[1].y + marginWidth/2)]
+            
+            configDecorationLayerUI(decorationLayer, path: pointsToPath(points))
+            
+            //shadow
+            let shadowPoints = [CGPoint(x: ribbonPoints[1].x, y: ribbonPoints[0].y  - decorationSize),
+                                CGPoint(x: ribbonPoints[1].x + abs(decorationSize*4/5), y: ribbonPoints[0].y),
+                                CGPoint(x: ribbonPoints[1].x, y: ribbonPoints[0].y + marginWidth/2)]
+            configShadowLayerUI(decorationShadowLayer, path: pointsToPath(shadowPoints))
+        }
     }
     
     private func calcPoints(distance: CGFloat) {
