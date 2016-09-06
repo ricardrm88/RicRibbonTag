@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RicRibbonTag"
-  s.version      = "1.1.1"
+  s.version      = "1.2.0"
   s.summary      = "Library for adding tags shaped as ribbons to existing views"
   s.description  = <<-DESC
   						Library for adding tags shaped as ribbons to existing views, can be used on top
