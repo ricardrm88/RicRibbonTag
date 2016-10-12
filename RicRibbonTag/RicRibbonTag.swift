@@ -190,11 +190,11 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     public func wrap(view: UIView) {
         view.layer.insertSublayer(self, atIndex: 0)
         
-        //maskView = UIView(frame: view.bounds)
         maskView = UIView(frame: CGRect(x: -decorationSize, y: -decorationSize, width: view.bounds.width + decorationSize*2, height: view.bounds.height + decorationSize*2))
         maskView.clipsToBounds = true
         view.addSubview(maskView)
         maskView.addSubview(label)
+        maskView.userInteractionEnabled = false
         self.wrappedView = view
         renderRibbon()
         setSizeToFit()
