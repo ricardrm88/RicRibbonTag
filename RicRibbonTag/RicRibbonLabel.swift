@@ -27,11 +27,11 @@ import Foundation
 import UIKit
 
 /// A label which notifies layout updates.
-public class RicRibbonLabel: UILabel {
+open class RicRibbonLabel: UILabel {
     // Delegate used to notify updates.
-    public var delegate: RicRibbonLabelProtocol!
+    open var delegate: RicRibbonLabelProtocol!
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         delegate?.ribbonLabelUpdatedLayout(self)
     }
@@ -39,5 +39,5 @@ public class RicRibbonLabel: UILabel {
 
 /// Protocol for RicRibbonLabel.
 public protocol RicRibbonLabelProtocol {
-    func ribbonLabelUpdatedLayout(sender: RicRibbonLabel)
+    func ribbonLabelUpdatedLayout(_ sender: RicRibbonLabel)
 }

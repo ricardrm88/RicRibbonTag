@@ -27,95 +27,95 @@ import UIKit
 import Foundation
 
 /// A ribbon with messages used to wrap views.
-public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
+open class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
      /// The label displayed in the ribbon.
-    public var label: RicRibbonLabel!
+    open var label: RicRibbonLabel!
     
-    private var wrappedView: UIView!
-    private var maskView: UIView!
+    fileprivate var wrappedView: UIView!
+    fileprivate var maskView: UIView!
     
-    private var maskLayer = CAShapeLayer()
-    private var decorationLayer: CAShapeLayer!
-    private var decorationShadowLayer: CAShapeLayer!
-    private var decorationLayer2: CAShapeLayer!
-    private var decorationShadowLayer2: CAShapeLayer!
+    fileprivate var maskLayer = CAShapeLayer()
+    fileprivate var decorationLayer: CAShapeLayer!
+    fileprivate var decorationShadowLayer: CAShapeLayer!
+    fileprivate var decorationLayer2: CAShapeLayer!
+    fileprivate var decorationShadowLayer2: CAShapeLayer!
     
-    private var ribbonPoints = Array<CGPoint>()
+    fileprivate var ribbonPoints = Array<CGPoint>()
     
-    private var horizontalOffset: CGFloat = 0.0
-    private var offset: CGFloat = 10.0
-    private var stripeWidth: CGFloat = 0.0
-    private var stripeSpaceWidth: CGFloat = 0.0
-    private var angle: CGFloat = 0.0
+    fileprivate var horizontalOffset: CGFloat = 0.0
+    fileprivate var offset: CGFloat = 10.0
+    fileprivate var stripeWidth: CGFloat = 0.0
+    fileprivate var stripeSpaceWidth: CGFloat = 0.0
+    fileprivate var angle: CGFloat = 0.0
     
      /// The size of the decorations added outside of the view.
-    public var decorationSize: CGFloat = 18.0 {
+    open var decorationSize: CGFloat = 18.0 {
         didSet{ renderRibbon() }
     }
     
      /// The width of the ribbon.
-    public var ribbonWidth: CGFloat = 20.0 {
+    open var ribbonWidth: CGFloat = 20.0 {
         didSet{ renderRibbon() }
     }
     
      /// The color of the ribbon.
-    public var ribbonColor: CGColor = UIColor.init(red: 0.6, green: 0.2, blue: 0.2, alpha: 1.0).CGColor {
+    open var ribbonColor: CGColor = UIColor.init(red: 0.6, green: 0.2, blue: 0.2, alpha: 1.0).cgColor {
         didSet{ renderRibbon() }
     }
     
      /// The color of the margin around the ribbon, if any.
-    public var marginColor: CGColor = UIColor.init(red: 1.0, green: 0.8, blue: 0.2, alpha: 1.0).CGColor {
+    open var marginColor: CGColor = UIColor.init(red: 1.0, green: 0.8, blue: 0.2, alpha: 1.0).cgColor {
         didSet{ renderRibbon() }
     }
     
      /// The width of the margin around the ribbon.
-    public var marginWidth: CGFloat = 0.0 {
+    open var marginWidth: CGFloat = 0.0 {
         didSet{ renderRibbon() }
     }
     
      /// The distance between the origin corner point and the point of the ribbon closer to it.
-    public var originDistance: CGFloat = 50.0 {
+    open var originDistance: CGFloat = 50.0 {
         didSet{ renderRibbon() }
     }
     
      /// The length of the ribbon in Right, Left and Top ribbons.
-    public var ribbonLength: CGFloat = 100.0 {
+    open var ribbonLength: CGFloat = 100.0 {
         didSet{ renderRibbon() }
     }
     
      /// If true the ribbon and the origin may be modyfied to keep the whole ribbon in bounds.
-    public var keepInBounds: Bool = true {
+    open var keepInBounds: Bool = true {
         didSet { renderRibbon() }
     }
     
      /// If true the ribbon may move horizontally if it's taller than the view containing it.
-    public var movesHorizontally: Bool = false {
+    open var movesHorizontally: Bool = false {
         didSet { renderRibbon() }
     }
     
      /// Displays a shadow below the ribbon if true.
-    public var usesShadow: Bool = true {
+    open var usesShadow: Bool = true {
         didSet { renderRibbon() }
     }
     
      /// Displays decorators outside the parent view if true.
-    public var displayDecorators: Bool = true {
+    open var displayDecorators: Bool = true {
         didSet { renderRibbon() }
     }
     
      /// The type of ribbon that will render.
-    public var type = RibbonType.TopLeftCorner {
+    open var type = RibbonType.topLeftCorner {
         didSet { renderRibbon() }
     }
     
      /// Added padding to ribbon when ribbon is autoresized.
-    public var autoresizePadding: CGFloat = 10.0 {
+    open var autoresizePadding: CGFloat = 10.0 {
         didSet { renderRibbon() }
     }
     
      /// When true the ribbon will autoresize to wrap it's content.
-    public var autoresizes: Bool = false {
+    open var autoresizes: Bool = false {
         didSet {
             setSizeToFit()
             renderRibbon()
@@ -132,7 +132,7 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
      
      - Returns: An initialized ribbon.
      */
-    public override init(layer: AnyObject) {
+    public override init(layer: Any) {
         super.init()
         initializeUI()
     }
@@ -159,11 +159,11 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
         super.init(coder: aDecoder)
     }
     
-    private func initializeUI(){
+    fileprivate func initializeUI(){
         self.label = RicRibbonLabel()
         label.delegate = self
-        label.lineBreakMode = .ByClipping
-        label.textAlignment = .Center
+        label.lineBreakMode = .byClipping
+        label.textAlignment = .center
         label.numberOfLines = 0
         
         marginWidth = 1
@@ -171,11 +171,11 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
     // MARK: Parent methods
     
-    override public func awakeFromNib() {
+    override open func awakeFromNib() {
         initializeUI()
     }
     
-    override public func layoutSublayers() {
+    override open func layoutSublayers() {
         super.layoutSublayers()
         renderRibbon()
     }
@@ -187,14 +187,14 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
      
      @param view UIView that will be surrounded by the ribbon.
      */
-    public func wrap(view: UIView) {
-        view.layer.insertSublayer(self, atIndex: 0)
+    open func wrap(_ view: UIView) {
+        view.layer.insertSublayer(self, at: 0)
         
         maskView = UIView(frame: CGRect(x: -decorationSize, y: -decorationSize, width: view.bounds.width + decorationSize*2, height: view.bounds.height + decorationSize*2))
         maskView.clipsToBounds = true
         view.addSubview(maskView)
         maskView.addSubview(label)
-        maskView.userInteractionEnabled = false
+        maskView.isUserInteractionEnabled = false
         self.wrappedView = view
         renderRibbon()
         setSizeToFit()
@@ -208,15 +208,15 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
      @param lineWidth width of the dashed pattern.
      @param spaceWidth space between stripes.
      */
-    public func setDashPattern(lineWidth: CGFloat, spaceWidth: CGFloat){
+    open func setDashPattern(_ lineWidth: CGFloat, spaceWidth: CGFloat){
         stripeWidth = lineWidth
         stripeSpaceWidth = spaceWidth
     }
     
     // MARK: Render methods
     
-    private func renderRibbon(){
-        let path = CGPathCreateMutable()
+    fileprivate func renderRibbon(){
+        let path = CGMutablePath()
         
         if let frame = wrappedView?.frame {
             let hDistance = keepInBounds ? distanceForBounds(frame.size.width) : originDistance
@@ -228,12 +228,12 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
             setTransformForDistance(distance)
             
             if ribbonPoints.count > 0 {
-                CGPathMoveToPoint(path, nil, ribbonPoints[0].x, ribbonPoints[0].y)
+                path.move(to: CGPoint(x: ribbonPoints[0].x, y: ribbonPoints[0].y))
             }
             
             for i in 0 ..< ribbonPoints.count {
                 let pos = (i + 1) % ribbonPoints.count
-                CGPathAddLineToPoint(path, nil, ribbonPoints[pos].x, ribbonPoints[pos].y)
+                path.addLine(to: CGPoint(x: ribbonPoints[pos].x, y: ribbonPoints[pos].y))
             }
             
             configureShape(with: path)
@@ -249,19 +249,19 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
         }
     }
     
-    private func renderDecoration(){
+    fileprivate func renderDecoration(){
         switch type {
-        case .TopLeftCorner, .TopRightCorner, .BottomLeftCorner, .BottomRightCorner:
+        case .topLeftCorner, .topRightCorner, .bottomLeftCorner, .bottomRightCorner:
             renderCornerDecoration()
-        case .Left, .Right, .Top:
+        case .left, .right, .top:
             renderEdgeDecoration()
         }
         
     }
     
-    private func renderCornerDecoration() {
+    fileprivate func renderCornerDecoration() {
         //init
-        let decorationOffset:CGFloat = type == .TopRightCorner || type == .BottomRightCorner ? -decorationSize : decorationSize
+        let decorationOffset:CGFloat = type == .topRightCorner || type == .bottomRightCorner ? -decorationSize : decorationSize
         
         decorationLayer = configShapeLayerIfNeeded(decorationLayer)
         decorationShadowLayer = configShapeLayerIfNeeded(decorationShadowLayer)
@@ -274,7 +274,7 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
                       CGPoint(x: ribbonPoints[1].x, y: marginWidth),
                       CGPoint(x: ribbonPoints[0].x, y: marginWidth)]
         
-        if type == .BottomRightCorner || type == .BottomLeftCorner {
+        if type == .bottomRightCorner || type == .bottomLeftCorner {
             points = points.map(flipVertically)
         }
         
@@ -285,14 +285,14 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
                             CGPoint(x: ribbonPoints[1].x + decorationOffset - decorationOffset/5, y: marginWidth),
                             CGPoint(x: ribbonPoints[1].x, y: marginWidth)]
         
-        if type == .BottomRightCorner || type == .BottomLeftCorner {
+        if type == .bottomRightCorner || type == .bottomLeftCorner {
             shadowPoints = shadowPoints.map(flipVertically)
         }
         
         configShadowLayerUI(decorationShadowLayer, path: pointsToPath(shadowPoints))
         
         var vDecorationOffset = decorationOffset
-        if type == .BottomLeftCorner || type == .TopRightCorner {
+        if type == .bottomLeftCorner || type == .topRightCorner {
             vDecorationOffset = -decorationOffset
         }
         
@@ -315,11 +315,11 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
         configShadowLayerUI(decorationShadowLayer2, path: pointsToPath(shadowPoints2))
     }
     
-    private func renderEdgeDecoration() {
-        if type == .Right || type == .Left{
+    fileprivate func renderEdgeDecoration() {
+        if type == .right || type == .left{
             
-            let offset = type == .Right ? decorationSize : -decorationSize
-            let margin = type == .Right ? -marginWidth/2 : marginWidth/2
+            let offset = type == .right ? decorationSize : -decorationSize
+            let margin = type == .right ? -marginWidth/2 : marginWidth/2
             
             decorationLayer = configShapeLayerIfNeeded(decorationLayer)
             decorationShadowLayer = configShapeLayerIfNeeded(decorationShadowLayer)
@@ -337,7 +337,7 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
                                 CGPoint(x: ribbonPoints[0].x + margin, y: ribbonPoints[0].y)]
             
             configShadowLayerUI(decorationShadowLayer, path: pointsToPath(shadowPoints))
-        } else if type == .Top{
+        } else if type == .top{
             decorationLayer = configShapeLayerIfNeeded(decorationLayer)
             decorationShadowLayer = configShapeLayerIfNeeded(decorationShadowLayer)
             
@@ -356,12 +356,12 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
         }
     }
     
-    private func calcPoints(distance: CGFloat) {
+    fileprivate func calcPoints(_ distance: CGFloat) {
         ribbonPoints.removeAll()
         
         if let frame = wrappedView?.frame{
             switch self.type {
-            case .TopLeftCorner, .TopRightCorner, .BottomLeftCorner, .BottomRightCorner:
+            case .topLeftCorner, .topRightCorner, .bottomLeftCorner, .bottomRightCorner:
                 if horizontalOffset == 0 {
                     ribbonPoints.append(CGPoint(x: distance + marginWidth, y: marginWidth/2))
                     ribbonPoints.append(CGPoint(x: distance + ribbonWidth - marginWidth, y: marginWidth/2))
@@ -375,7 +375,7 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
                     ribbonPoints.append(CGPoint(x: marginWidth/2, y: horizontalOffset + marginWidth))
                     ribbonPoints.append(CGPoint(x: horizontalOffset + marginWidth, y: marginWidth/2))
                 }
-            case .Left, .Right, .Top:
+            case .left, .right, .top:
                 ribbonPoints.append(CGPoint(x: marginWidth/2, y: distance + marginWidth/2))
                 ribbonPoints.append(CGPoint(x: marginWidth/2, y: distance + marginWidth/2 + ribbonWidth))
                 ribbonPoints.append(CGPoint(x: ribbonLength + marginWidth/2, y: distance + marginWidth/2 + ribbonWidth))
@@ -384,13 +384,13 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
             }
             ribbonPoints = ribbonPoints.map({ (point: CGPoint) -> CGPoint in
                 switch self.type {
-                case .TopRightCorner, .Right:
+                case .topRightCorner, .right:
                     return CGPoint(x: frame.width - point.x, y: point.y)
-                case .BottomLeftCorner:
+                case .bottomLeftCorner:
                     return CGPoint(x: point.x, y: frame.height - point.y)
-                case .BottomRightCorner:
+                case .bottomRightCorner:
                     return CGPoint(x: frame.width - point.x, y: frame.height - point.y)
-                case .Top:
+                case .top:
                     return CGPoint(x: point.y, y: point.x)
                 default:
                     return CGPoint(x: point.x, y: point.y)
@@ -401,119 +401,125 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
     
     // MARK: UI methods
     
-    private func applyMasks(){
-        let maskPath = CGPathCreateMutable()
+    fileprivate func applyMasks(){
+        let maskPath = CGMutablePath()
         
-        CGPathMoveToPoint(maskPath, nil, 0, wrappedView.frame.height)
+        maskPath.move(to: CGPoint(x: 0, y: wrappedView.frame.height))
+        maskPath.addLine(to: CGPoint(x: wrappedView.frame.width, y: wrappedView.frame.height))
+        maskPath.addLine(to: CGPoint(x: wrappedView.frame.width, y: 0))
+        maskPath.addLine(to: CGPoint(x: 0, y: 0))
+        maskPath.addLine(to: CGPoint(x: 0, y: wrappedView.frame.height))
+        
+        /*CGPathMoveToPoint(maskPath, nil, 0, wrappedView.frame.height)
         CGPathAddLineToPoint(maskPath, nil, wrappedView.frame.width, wrappedView.frame.height)
         CGPathAddLineToPoint(maskPath, nil, wrappedView.frame.width, 0)
         CGPathAddLineToPoint(maskPath, nil, 0, 0)
-        CGPathAddLineToPoint(maskPath, nil, 0, wrappedView.frame.height)
+        CGPathAddLineToPoint(maskPath, nil, 0, wrappedView.frame.height)*/
         
         let maskLayer = CAShapeLayer()
         maskLayer.path = maskPath
-        maskLayer.strokeColor = UIColor.redColor().CGColor
+        maskLayer.strokeColor = UIColor.red.cgColor
         
         self.mask = maskLayer
     }
     
-    private func setSizeToFit() {
+    fileprivate func setSizeToFit() {
         label.sizeToFit()
         label.setNeedsLayout()
         label.setNeedsDisplay()
         label.layoutIfNeeded()
     }
     
-    private func configureShape(with path: CGMutablePath) {
+    fileprivate func configureShape(with path: CGMutablePath) {
         self.path = path
         self.fillColor = ribbonColor
         self.lineWidth = marginWidth
         self.strokeColor = marginColor
-        self.lineDashPattern = [stripeWidth, stripeSpaceWidth]
+        self.lineDashPattern = [stripeWidth as NSNumber, stripeSpaceWidth as NSNumber]
         
         if usesShadow {
-            self.shadowOffset = CGSizeMake(0, 10)
+            self.shadowOffset = CGSize(width: 0, height: 10)
             self.shadowRadius = 10.0
-            self.shadowColor = UIColor.blackColor().CGColor
+            self.shadowColor = UIColor.black.cgColor
             self.shadowOpacity = 0.5
         } else {
             self.shadowOpacity = 0.0
         }
     }
     
-    private func setTransformForDistance(distance: CGFloat) {
-        label.transform = CGAffineTransformIdentity
+    fileprivate func setTransformForDistance(_ distance: CGFloat) {
+        label.transform = CGAffineTransform.identity
         self.label.frame = CGRect(x: offset, y: distance, width: getLargeDistance(), height: ribbonWidth)
         
         let elements = CGFloat(ribbonPoints.count - 1)
         
         if ribbonPoints.count > 0 {
-            let x = ribbonPoints.suffixFrom(1).reduce(0) { $0 + ($1.x / elements) }
-            let y = ribbonPoints.suffixFrom(1).reduce(0) { $0 + ($1.y / elements) }
+            let x = ribbonPoints.suffix(from: 1).reduce(0) { $0 + ($1.x / elements) }
+            let y = ribbonPoints.suffix(from: 1).reduce(0) { $0 + ($1.y / elements) }
             label.center = CGPoint(x: x + decorationSize, y: y + decorationSize)
         }
         
         switch self.type {
-        case .TopLeftCorner, .BottomRightCorner:
+        case .topLeftCorner, .bottomRightCorner:
             angle = CGFloat(-M_PI/4)
             break
-        case .TopRightCorner, .BottomLeftCorner:
+        case .topRightCorner, .bottomLeftCorner:
             angle = CGFloat(M_PI/4)
             break
-        case .Top:
+        case .top:
             angle = CGFloat(M_PI/2)
             break
         default:
             break
         }
         
-        label.transform = CGAffineTransformRotate(label.transform, angle)
+        label.transform = label.transform.rotated(by: angle)
     }
     
     // MARK: Util methods
     
-    private func configShadowLayerUI(layer: CAShapeLayer, path: CGMutablePath) {
+    fileprivate func configShadowLayerUI(_ layer: CAShapeLayer, path: CGMutablePath) {
         layer.path = path
-        layer.fillColor = UIColor.darkGrayColor().CGColor
+        layer.fillColor = UIColor.darkGray.cgColor
     }
     
-    private func configDecorationLayerUI(layer: CAShapeLayer, path: CGMutablePath) {
+    fileprivate func configDecorationLayerUI(_ layer: CAShapeLayer, path: CGMutablePath) {
         layer.path = path
         layer.fillColor = ribbonColor
         layer.lineWidth = marginWidth
     }
     
-    private func configShapeLayerIfNeeded(shapeLayer: CAShapeLayer?) -> CAShapeLayer{
+    fileprivate func configShapeLayerIfNeeded(_ shapeLayer: CAShapeLayer?) -> CAShapeLayer{
         if let layer = shapeLayer {
             return layer
         } else {
             let layer = CAShapeLayer()
-            wrappedView.layer.insertSublayer(layer, atIndex: 0)
+            wrappedView.layer.insertSublayer(layer, at: 0)
             return layer
         }
     }
     
-    private func pointsToPath(points: Array<CGPoint>) -> CGMutablePath{
-        let path = CGPathCreateMutable()
+    fileprivate func pointsToPath(_ points: Array<CGPoint>) -> CGMutablePath{
+        let path = CGMutablePath()
         
         if points.count > 0 {
-            CGPathMoveToPoint(path, nil, points[0].x, points[0].y)
+            path.move(to: CGPoint(x: points[0].x, y: points[0].y))
         }
         
         for i in 0 ..< points.count {
             let pos = (i + 1) % points.count
-            CGPathAddLineToPoint(path, nil, points[pos].x, points[pos].y)
+            path.addLine(to: CGPoint(x: points[pos].x, y: points[pos].y))
         }
         return path
     }
     
-    private func flipVertically(point: CGPoint) -> CGPoint{
+    fileprivate func flipVertically(_ point: CGPoint) -> CGPoint{
         return CGPoint(x: point.x, y: wrappedView.frame.height - point.y)
     }
     
     // MARK: Distance calc methods
     
-    private func getLargeDistance() -> CGFloat{
+    fileprivate func getLargeDistance() -> CGFloat{
         if ribbonPoints.count > 2{
             let xDist = (ribbonPoints[2].x - ribbonPoints[1].x);
             let yDist = (ribbonPoints[2].y - ribbonPoints[1].y);
@@ -522,7 +528,7 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
         return 0
     }
     
-    private func getShortDistance() -> CGFloat{
+    fileprivate func getShortDistance() -> CGFloat{
         if ribbonPoints.count > 2{
             let xDist = (ribbonPoints[0].x - ribbonPoints[ribbonPoints.count - 2].x);
             let yDist = (ribbonPoints[0].y - ribbonPoints[ribbonPoints.count - 2].y);
@@ -531,7 +537,7 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
         return 0
     }
     
-    private func distanceForBounds(parentSize: CGFloat) -> CGFloat {
+    fileprivate func distanceForBounds(_ parentSize: CGFloat) -> CGFloat {
         let ribbonWidth = self.ribbonWidth + autoresizePadding
         if movesHorizontally {
             if (originDistance + ribbonWidth) > parentSize {
@@ -561,13 +567,13 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
      
      @param sender label that has been updated.
      */
-    public func ribbonLabelUpdatedLayout(sender: RicRibbonLabel) {
+    open func ribbonLabelUpdatedLayout(_ sender: RicRibbonLabel) {
         if autoresizes {
             switch self.type {
-            case .TopLeftCorner, .BottomRightCorner, .TopRightCorner, .BottomLeftCorner, .Left, .Right:
+            case .topLeftCorner, .bottomRightCorner, .topRightCorner, .bottomLeftCorner, .left, .right:
                 ribbonWidth = sender.bounds.height + autoresizePadding
                 break
-            case .Top:
+            case .top:
                 ribbonWidth = sender.frame.width + autoresizePadding
                 break
             }
@@ -587,11 +593,11 @@ public class RicRibbon: CAShapeLayer, RicRibbonLabelProtocol {
  - Top: Displays the ribbon at the top of the view.
  */
 public enum RibbonType {
-    case TopLeftCorner
-    case TopRightCorner
-    case BottomLeftCorner
-    case BottomRightCorner
-    case Left
-    case Right
-    case Top
+    case topLeftCorner
+    case topRightCorner
+    case bottomLeftCorner
+    case bottomRightCorner
+    case left
+    case right
+    case top
 }
