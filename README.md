@@ -56,14 +56,13 @@ Just copy RicRibbonLabel.swift and RicRibbonTag.swift to your project
 ## Quick example:
 
 ```swift
+let ribbon = RicRibbon()
 
-let ribbon = RicRibbonTag()
-
-ribbon.type = .TopLeftCorner
+ribbon.type = .topLeftCorner
 ribbon.label.text = "20% Discount"
 ribbon.originDistance = 40
 ribbon.ribbonWidth = 40
-ribbon.label.textColor = UIColor.whiteColor()
+ribbon.label.textColor = .white
 
 ribbon.wrap(containerView)
 ```
