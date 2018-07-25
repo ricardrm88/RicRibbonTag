@@ -69,45 +69,45 @@ ribbon.wrap(containerView)
 
 <img width="271" alt="captura de pantalla 2016-09-02 a las 16 55 16" src="https://cloud.githubusercontent.com/assets/7848066/18208717/d62dfde2-7130-11e6-82ca-461594ef2045.png">
 
-##Properties
+## Properties
 
-####label
+#### label
 Label rendered inside the label, it can be used to modify it's text and font. It's frame, origin and transform are modified internally and shouldn't be edited
 
-####decorationSize
+#### decorationSize
 Size of the decoration at the outer edges of the ribbon, clipstobounds should be disabled in the parent view for them to be visible
 
-####ribbonWidth
+#### ribbonWidth
 Width of the ribbon, it's ignored if autoresizes is enabled
 
-####ribbonColor
+#### ribbonColor
 Color that the ribbon will be displayed with
 
-####marginColor
+#### marginColor
 Color of the margin of the ribbon
 
-####marginWidth
+#### marginWidth
 Width of the margin of the ribbon
 
-####originDistance
+#### originDistance
 Distance from the reference point of the container view to the closest point of the ribbon
 
-####ribbonLength
+#### ribbonLength
 Length of the ribbon, will only work with .Left .Right and .Top types
 
-####keepInBounds
+#### keepInBounds
 If enabled originDistance and ribbon width may be modified to keep the ribbon in the container bounds
 
-####movesHorizontally
+#### movesHorizontally
 If enabled, it will move the ribbon horizontally when needed to keep the whole ribbon inside of the container bounds
 
-####usesShadow
+#### usesShadow
 If enabled the ribbon will cast a shadow
 
-####displayDecorators
+#### displayDecorators
 If enabled it will display decorators at the outer edges of the ribbon, clipstobounds should be disabled in the parent view for them to be visible
 
-####type
+#### type
 It determines the position of the ribbon in the container, it allows the following values:
 ```swift
 enum RibbonType {
@@ -127,16 +127,16 @@ Padding added between the ribbon and it's label when autoresizes is enabled
 ####autoresizes
 When enabled the ribbon width will equal it's label height
 
-##Methods
+## Methods
 
-####wrap(view: UIView)
+#### wrap(view: UIView)
 Used to wrap a view with the current ribbon
 
-####setDashPattern(lineWidth: CGFloat, spaceWidth: CGFloat)
+#### setDashPattern(lineWidth: CGFloat, spaceWidth: CGFloat)
 Sets a dash pattern as the margin of the ribbon where lineWidth will be the stripe length and spaceWidth will be the length of the space between stripes 
 
 
-##License
+## License
 ```
 MIT License
 
